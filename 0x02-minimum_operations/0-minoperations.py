@@ -3,11 +3,12 @@
 Minimum operations
 """
 
+
 def minOperations(n):
     """Copy/Paste"""
     if n <= 1:
         return 0
-    
+
     operation_needed = 0
     clipbord = 0
     current_lenght = 1
@@ -21,22 +22,27 @@ def minOperations(n):
 
         current_lenght += clipbord
         operation_needed += 1
-    
+
     return operation_needed
 
 
 """ n = 4
-print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
+print("Min # of operations to reach {} char: {}
+".format(n, minOperations(n)))
 
 n = 12
-print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
+print("Min # of operations to reach {} char: {}
+".format(n, minOperations(n)))
 
 n = 0
-print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
+print("Min # of operations to reach {} char: {}
+".format(n, minOperations(n)))
 
 n = 1
-print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
+print("Min # of operations to reach {} char: {}
+".format(n, minOperations(n)))
 
 n = 10
-print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
- """
+print("Min # of operations to reach {} char: {}
+".format(n, minOperations(n)))
+"""
