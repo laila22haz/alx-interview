@@ -1,18 +1,23 @@
 #!/usr/bin/python3
 """
-Change comes from within
+Main file for testing
 """
 
 
-def makeChange(coins, total):
+def makeChange(coins, amount):
     """
-    Given a pile of coins of different values,
-    determine the fewest number of coins needed to meet a given amount total
+    How many of this type of coin can I get with my money? Okay,
+        I'll take that many. Now, how much money do I have left?
+        And how many coins do I have in my pocket?
     """
-    if total <= 0:
+    if amount < 1:
         return 0
-    dp = [0] + [float("inf")] * (total)
+    coins.sort(reverse=True)
+    count = 0
     for coin in coins:
-        for i in range(coin, total + 1):
-            dp[i] = min(dp[i], dp[i - coin] + 1)
-    return dp[-1] if dp[-1] != float("inf") else -1
+        if amount == 0:
+            break
+        num = amount // coin
+        amount -= num * coin
+        count += num
+    return count if amount == 0 else -1
