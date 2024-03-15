@@ -1,70 +1,34 @@
 #!/usr/bin/python3
-"""
-Prime Game
-"""
-
-
-def findMultiples(num, targets):
-    """
-    Finds multiples of a given number within a list
-    """
-    for i in targets:
-        if i % num == 0:
-            targets.remove(i)
-    return targets
-
-
-def isPrime(i):
-    """
-    Check if a number is prime.
-    """
-    if i == 1:
-        return False
-    for j in range(2, i):
-        if i % j == 0:
-            return False
-    return True
-
-
-def findPrimes(n):
-    """
-    Dispatch a given set into prime numbers and non-prime numbers.
-    """
-    counter = 0
-    target = list(n)
-    for i in range(1, len(target) + 1):
-        if isPrime(i):
-            counter += 1
-            target.remove(i)
-            target = findMultiples(i, target)
-        else:
-            pass
-    return counter
 
 
 def isWinner(x, nums):
-    """
-    Function isWinner
-    """
-    players = {'Maria': 0, 'Ben': 0}
-    cluster = set()
-    for elem in range(x):
-        nums.sort()
-        num = nums[elem]
-        for i in range(1, num + 1):
-            cluster.add(i)
-            if i == num + 1:
-                break
-        temp = findPrimes(cluster)
+    def is_prime(num):
+        if num < 2:
+            return False
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                return False
+        return True
 
-        if temp % 2 == 0:
-            players['Ben'] += 1
-        elif temp % 2 != 0:
-            players['Maria'] += 1
+    def calculate_winner(n):
+        primes = [i for i in range(2, n + 1) if is_prime(i)]
+        if len(primes) % 2 == 0:
+            return "Ben"
+        else:
+            return "Maria"
 
-    if players['Maria'] > players['Ben']:
-        return 'Maria'
-    elif players['Maria'] < players['Ben']:
-        return 'Ben'
+    maria_wins = 0
+    ben_wins = 0
+    for n in nums:
+        winner = calculate_winner(n)
+        if winner == "Maria":
+            maria_wins += 1
+        elif winner == "Ben":
+            ben_wins += 1
+
+    if maria_wins > ben_wins:
+        return "Maria"
+    elif ben_wins > maria_wins:
+        return "Ben"
     else:
         return None
