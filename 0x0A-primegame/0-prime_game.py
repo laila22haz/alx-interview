@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+""" Prime Game """
 
 
 def isWinner(x, nums):
+    """ Prime Game """
     def is_prime(num):
         if num < 2:
             return False
@@ -11,6 +13,7 @@ def isWinner(x, nums):
         return True
 
     def calculate_winner(n):
+        """ Prime Game """
         primes = [i for i in range(2, n + 1) if is_prime(i)]
         if len(primes) % 2 == 0:
             return "Ben"
